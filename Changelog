@@ -1,0 +1,31 @@
+changeset:   6:67027b1f65f9
+user:        Tahir Hashmi <tnhashmi@gmail.com>
+date:        Thu Jan 28 19:58:14 2010 +0530
+summary:     Switch to ConfigParser for reading deployment configs
+
+changeset:   7:3d37de971605
+user:        Tahir Hashmi <tnhashmi@gmail.com>
+date:        Thu Jan 28 19:59:30 2010 +0530
+summary:     Change URL base to /services instead of /
+
+changeset:   8:6226f68a9166
+user:        Tahir Hashmi <tnhashmi@gmail.com>
+date:        Wed Feb 17 14:49:07 2010 +0530
+summary:     Added a monitoring hook. Revised documentation according to the new INI style config. Added basic tests.
+
+changeset:   9:3c7f1072a04a
+user:        Tahir Hashmi <tnhashmi@gmail.com>
+date:        Wed Feb 17 15:52:52 2010 +0530
+summary:     Error messaging fixes
+
+changeset:   10:88e9a2a9da2d
+user:        Tahir Hashmi <tnhashmi@gmail.com>
+date:        Thu Jun 03 17:52:58 2010 +0530
+summary:     Added config key 'unencoded_params' for named params that shouldn't be JSON decoded and 'drop_keys' for parameters that should not be forwarded to the application
+
+changeset:   11:520c59334a30
+tag:         tip
+user:        Tahir Hashmi <tnhashmi@gmail.com>
+date:        Mon Jun 07 16:47:20 2010 +0530
+summary:     Fixed the import for werkzeug.responder. Provided 'merge_req_params' config option that pulls in GET parameters for POST requests, along with POST data
+
