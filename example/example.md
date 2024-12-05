@@ -7,23 +7,27 @@ easy. So let's dip our toes in, shall we?
 
 ## 1. Getting Started
 
-Before getting started with this example, you should have wsloader
-installed correctly. For this example we'll use a Python module,
-greeter.py, from the 'tests' directory in wsloader source
+Before getting started with this example, you should have `wsloader`
+[installed](/INSTALL.md) correctly. For this example we'll use a Python module,
+`greeter.py`, from the `tests` directory in `wsloader` source
 distribution. It should be copied to a standard directory where you
-would install python modules. For RHEL, this is the "site-packages"
+would install python modules. For RHEL, this is the `site-packages`
 directory for Python in your system. The following command could help
 you find it:
 
-``locate site-packages | grep `python -V 2>&1 | awk '{print $2}' | cut -d . -f -2` ``
+```
+locate site-packages | grep `python -V 2>&1 | awk '{print $2}' | cut -d . -f -2`
+```
 
 For Ubuntu, this directory is `dist-packages`.
 
 ## 2. Hello World
 
-Let's say we have the following module
+The module that we're testing with is really tiny:
+
 ```python
-// greeter.py
+# file: greeter.py
+
 def say_hello():
     return "Hello World!"
 
@@ -37,7 +41,7 @@ class Greeter:
         return "%s %s" % (self.greeting, to_whom)
 ```
 
-The simplest of these services is the hello_world function in
+The simplest of these services is the `hello_world` function in
 greeter. To expose this in wsloader, you only have to create a file
 called `examples.ini` in `/etc/wsloader-wsgi/`. The file name actually
 doesn't matter. In its contents, just mention the name of the module
@@ -49,7 +53,8 @@ $ cat /etc/wsloader-wsgi/examples.ini
 $
 ```
 
-That's it. You just need the module name to be listed in the ini file. When you restart httpd after creating this config file, you can use the URL `http://localhost/services/greeter/say_hello` for the following Python equivalent:
+That's it. You just need the module name to be listed in the ini file. When you restart `httpd` after creating this configuration file, you can hit the URL `http://localhost/services/greeter/say_hello`, which does the equivalent of the following:
+
 ```python
 >>> import greeter
 >>> greeter.say_hello()
@@ -59,17 +64,14 @@ That's it. You just need the module name to be listed in the ini file. When you 
 
 ## 2. Advanced Configuration
 
-`greeter.py` module contains a class, `Greeter`. By default, it would be referred by wsloader as `localhost/services/greeter.Greeter`. The class takes an
-``__init__`` parameter, `greeting` and its `say_hello()` method takes an argument, `to_whom`.
-
-Normally, to expose this class, you'd add a line that reads
+`greeter.py` module contains a class, `Greeter`. By default, it would be referred by `wsloader` as `localhost/services/greeter.Greeter`. Normally, to expose this class, you'd add a line that reads
 "[greeter.Greeter]" in the config file. The resulting service URL
 would be:
 
 ```http://localhost/services/greeter/Greeter/```
 
 How about making it slightly more pretty? We shall change
-`greeter.Greeter` to "helloworld". To do that, replace ``[greeter.Greeter]`` in the `ini` config file
+`greeter/Greeter` to `helloworld`. To do that, replace ``[greeter.Greeter]`` in the `ini` config file
 with ``[helloworld]`` instead, and under it, add the following directive:
 
     alias_to=greeter.Greeter 
@@ -85,8 +87,9 @@ alias_to=greeter.Greeter
 $
 ```
 
-Since Greeter is a class that takes "greeting" as an
-``__init__`` parameter, we also need to specify the following:
+ The `Greeter` class takes an
+``__init__`` parameter, `greeting` and its `say_hello()` method takes an argument, `to_whom`.
+To enable the ``__init__`` parameter in the URL, we need to specify the following:
 
     type=class
     init_param=greeting
@@ -116,5 +119,5 @@ you can use the following URL:
 http://localhost/services/helloworld/say_hello?greeting="Hello"&to_whom="World"
 ```
 
-That's it! That's our Hello World example. The complete config file is provided in tests/conf/examples.ini.
+That's it! That's our Hello World example. The complete config file is provided in [tests/conf/examples.ini](/tests/conf/examples.ini).
 
