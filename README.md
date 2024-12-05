@@ -37,5 +37,4 @@ Currently wsloader supports the following features:
    * high-performance application loading and state management
    * apache error log access to module code via sys.stderr 
 
-See the Quick-start Guide for more details, at
-http://code.google.com/p/wsloader/wiki/QuickStart
+See the Quick-start Guide for more details, at [example/example.md](example/example.md)
