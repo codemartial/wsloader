@@ -8,6 +8,26 @@ to allow exposing native Python interfaces as REST-like webservices
 without writing any HTTP/web-service specific code to expose a new
 service.
 
+Convert this:
+```python
+# greeter.py
+def say_hello():
+   return "Hello World!"
+```
+
+to this:
+```sh
+$ curl -D - 'http://localhost:8080/say_hello'
+HTTP/1.1 200 OK
+Content-Length: 13
+Content-Type: text/plain; charset=utf-8
+Last-Modified: Thu, 05 Dec 2009 09:30:01 GMT
+Date: Thu, 05 Dec 2009 09:34:47 GMT
+
+Hello World!
+```
+with *no additional code*! 
+
 Objectives
 ----------
 
