@@ -27,14 +27,11 @@ Features
 Currently wsloader supports the following features:
 
    * loading any Python module/class as a service
-   * handling of service independent request and response marshalling
-   * via JSON
-   * automatic URL creation based on the module path (can be
-   * overridden)
-   * automatic enforcing of GET and POST methods for read and write
-   * endpoints
+   * handling of service independent request and response marshalling via JSON
+   * automatic URL creation based on the module path (can be overridden)
+   * automatic enforcing of GET and POST methods for read and write endpoints
    * proper HTTP error responses for service invocation failures
    * high-performance application loading and state management
-   * apache error log access to module code via sys.stderr 
+   * redirection of `sys.stderr` to apache error logs 
 
 See the Quick-start Guide for more details, at [example/example.md](example/example.md)
