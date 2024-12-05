@@ -44,4 +44,4 @@ inside `wsloader.conf` file.
 
 ## 5. Try it out
 
-Look at the [Quick Start Guide](example.md) for a demo service to test the installation.
+Look at the [Quick Start Guide](example/example.md) for a demo service to test the installation.
